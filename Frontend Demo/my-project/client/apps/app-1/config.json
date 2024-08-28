@@ -1,0 +1,19 @@
+{
+  "script": "app-1/App1",
+  "title": "APP_1",
+  "route": "app-1",
+  "localePath": "locale/",
+  "menu": {
+    "id": "APP_1",
+    "data": {
+      "path": "app-1"
+    }
+  },
+  "dependencies": {
+    "@eui/component": "0.10.x",
+    "@eui/lit-component": "0.12.x",
+    "@eui/app": "0.12.x"
+  },
+  "components": {},
+  "subtitle": "SUBTITLE_APP_1"
+}

@@ -1,0 +1,9 @@
+version: '3.4'
+services:
+  k6:
+    image: loadimpact/k6:latest
+    command: run /home/k6/main.js
+    environment:
+      -  K6_SUMMARY_EXPORT=json=/tmp/test-output.json
+    volumes:
+      - ./k6tests/main/k6:/home/k6

@@ -1,0 +1,108 @@
+{
+	"debug": true,
+	"namespace": "EUI",
+	"menu": {
+		"menuConfig": "config/config.menu.json",
+		"hideMenu": false,
+		"openMenu": false
+	},
+	"showBreadcrumbs": false,
+	"component": {
+		"componentsPath": "components/"
+	},
+	"app": {
+		"defaultApp": "myapp1",
+		"appsPath": "apps/"
+	},
+	"panel": {
+		"panelsPath": "panels/"
+	},
+	"i18n": {
+		"defaultLocale": "en-us",
+		"defaultDateLocale": "en-us",
+		"localeIds": [
+			"en-us"
+		],
+		"localeIdsRTL": [],
+		"localesPath": "locale/",
+		"localesType": "file"
+	},
+	"cache": {
+		"timeout": 1,
+		"maxAge": 2,
+		"autoClear": true
+	},
+	"router": {
+		"autoUrlDecode": true,
+		"appRoot": "/",
+		"autoRestVars": true,
+		"varPrefix": "!",
+		"mode": "hash",
+		"allowDirect": true,
+		"singleMode": false,
+		"routeMap": {
+			"myapp1": "app-1"
+		}
+	},
+	"ui": {
+		"top": [
+			{
+				"id": "static-logo",
+				"type": "package",
+				"path": "logo",
+				"position": "left"
+			},
+			{
+				"id": "bt-view-tiles",
+				"type": "button",
+				"position": "right",
+				"icon": "view-tiles",
+				"action": "LOAD_SYSTEM_PANEL",
+				"payload": "sample-system-panel"
+			},
+			{
+        "id": "bt-notifications",
+        "type": "package",
+        "path": "notification-log-icon",
+        "position": "right",
+        "action": "LOAD_SYSTEM_PANEL",
+        "payload": "notification-log-panel"
+      },
+			{
+				"id": "bt-user-icon",
+				"type": "package",
+				"path": "user-display",
+				"position": "right",
+				"action": "LOAD_SYSTEM_PANEL",
+				"payload": "user-settings-panel"
+			}
+		],
+		"left": {
+			"name": "menu-panel"
+		}
+	},
+	"authentication": {
+		"plugin": {
+			"name": "authentication",
+			"method": "checkStatus"
+		},
+		"redirect": "./login.html",
+		"validate": true
+	},
+  "plugin": {
+    "pluginsPath": "plugins/",
+    "pluginTimeout": 500,
+    "plugins": [
+      {
+        "name": "authentication",
+        "options": {}
+      },
+      {
+        "name": "sample"
+      }
+    ]
+  },
+	"content": {
+		"padding": false
+	}
+}

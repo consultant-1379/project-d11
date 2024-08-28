@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Git Repo Mining</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico?<%= htmlWebpackPlugin.options.ts %>">
+  <link rel="stylesheet" href="assets/css/container.shared.css?<%= htmlWebpackPlugin.options.ts %>" media="screen" />
+  <script>
+    var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
+    var isOldEdge = /Edge/.test(navigator.userAgent);
+    if (isIE11 || isOldEdge) { window.location = 'browser.support.html'; }
+    window.EUI_TS = '<%= htmlWebpackPlugin.options.ts %>';
+  </script>
+</head>
+
+<body class="level-0 light">
+  <script src="config/defaults.js?<%= htmlWebpackPlugin.options.ts %>"></script>
+  <script src="libs/system.js?<%= htmlWebpackPlugin.options.ts %>"></script>
+  <script src="libs/@eui/container/0/eui-container-umd.js?<%= htmlWebpackPlugin.options.ts %>"></script>
+
+</body>
+
+</html>

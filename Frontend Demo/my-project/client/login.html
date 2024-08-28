@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Login</title>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico?<%= htmlWebpackPlugin.options.ts %>">
+  <link rel="stylesheet" type="text/css" href="assets/css/login.css?<%= htmlWebpackPlugin.options.ts %>" media="screen">
+  <script src="libs/@eui/base/0/eui-base-umd.js?<%= htmlWebpackPlugin.options.ts %>"></script>
+  <style>
+    .loginMessage {
+      align-self: center;
+      margin-bottom: 10px;
+      flex: 2;
+      text-align: center;
+    }
+
+    .loader {
+      align-self: center;
+    }
+
+    #message {
+      font-size: 30px;
+      font-weight: 100;
+      margin-bottom: 10px;
+    }
+
+    #user {
+      font-size: 48px;
+      margin-top: 0;
+    }
+
+    .errorMessage {
+      align-self: center;
+    }
+
+    #warningIcon {
+      display: inline-block;
+    }
+
+    #errorText {
+      display: inline-block;
+    }
+  </style>
+</head>
+
+<body class="dark">
+  <div class=signin>
+    <div class="watermark">
+      <i class="icon icon-econ"></i>
+      <div class="product">E-UI SDK</div>
+    </div>
+
+    <div class="errorMessage" hidden>
+      <eui-v0-icon id="warningIcon" name="triangle-warning" color="red"></eui-v0-icon>
+      <p id="errorText">Your email or password is incorrect.</p>
+    </div>
+    <div class="loginMessage" hidden>
+      <p id="message">Loading...</p>
+      <h1 id="user" hidden></h1>
+      <eui-base-v0-loader class="loader"></eui-base-v0-loader>
+    </div>
+    <div class="loginForm">
+      <div class="field">
+        <eui-base-v0-text-field id="username" labeltext="Username" placeholder="Email" fullwidth></eui-base-v0-text-field>
+      </div>
+      <div class="field">
+        <eui-base-v0-password-field class="field" labeltext="Password" placeholder="" fullwidth></eui-base-v0-password-field>
+      </div>
+      <div class="field">
+        <eui-base-v0-checkbox class="field" name="rememberme">Remember me</eui-base-v0-checkbox>
+      </div>
+      <div>
+        <eui-base-v0-button class="field" big primary fullwidth onclick="authenticateRedirect()">Sign in</eui-base-v0-button>
+      </div>
+    </div>
+
+    <div class="help">
+      <a class="subtle-link" href="#">Having trouble signing in?</a>
+    </div>
+
+    <div class="footer">
+      © Ericsson AB 2013-2022 - All Rights Reserved. <br>
+      No part of this software may be reproduced in any form without the written permission of the copyright holder.
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    async function authenticateRedirect () {
+      beginLogin();
+      await nextStep(showWelcome);
+      await nextStep(redirect);
+    }
+
+    function beginLogin() {
+      document.querySelector('.loginForm').hidden = true;
+      document.querySelector('.errorMessage').hidden = true;
+      document.querySelector('.loginMessage').hidden = false;
+      document.querySelector('.help').hidden = true;
+    }
+
+    function showWelcome() {
+        document.querySelector('#message').textContent = 'Welcome';
+        const user = document.querySelector('#user');
+        user.textContent = getName();
+        user.hidden = false;
+    }
+
+    function resetWelcome() {
+        document.querySelector('#message').textContent = 'Loading...';
+        document.querySelector('#user').hidden = true;
+    }
+
+    function redirect() {
+        if (typeof(Storage) !== "undefined") {
+          var storage = window.localStorage;
+          var session = window.sessionStorage;
+          storage.setItem('token', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+          storage.setItem('username', getName());
+          window.location = './';
+        }
+        else {
+          showError();
+        }
+    }
+
+    function showError() {
+      document.querySelector('.loginMessage').hidden = true;
+      document.querySelector('.loginForm').hidden = false;
+      document.querySelector('.errorMessage').hidden = false;
+      resetWelcome();
+    }
+
+    function getName() {
+      const el = document.getElementById('username');
+      return el.value || 'E-UI SDK';
+    }
+
+    async function nextStep(callback) {
+      return new Promise((resolve) => {
+        setTimeout(() => resolve(callback()), 1500);
+      })
+    }
+  </script>
+</body>
+
+</html>

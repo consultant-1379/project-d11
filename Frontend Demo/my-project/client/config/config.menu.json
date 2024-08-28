@@ -1,0 +1,17 @@
+{
+  "app": {
+    "options": {},
+    "menu": {
+      "data": [
+        {
+          "id": "APP_1",
+          "label": "APP_1",
+          "active": true,
+          "data": {
+            "path": "app-1"
+          }
+        }
+      ]
+    }
+  }
+}

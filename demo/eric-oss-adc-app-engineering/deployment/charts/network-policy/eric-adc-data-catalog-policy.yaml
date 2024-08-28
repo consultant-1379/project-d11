@@ -1,0 +1,13 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: eric-adc-k6-data-catalog-policy
+spec:
+  podSelector:
+    matchLabels:
+      app: eric-oss-data-catalog
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: adc-k6

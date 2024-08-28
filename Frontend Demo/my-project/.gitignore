@@ -1,0 +1,10 @@
+/.idea/
+/node_modules/
+/target/
+/deploy/
+/test/coverage/
+/test/junit/
+/test/acceptance/
+/test/reports/
+npm-debug.log
+package-lock.json
